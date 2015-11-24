@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF3C580A1BDCB2E300357901 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3C58091BDCB2E300357901 /* main.m */; };
+		AF3C580D1BDCB2E300357901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3C580C1BDCB2E300357901 /* AppDelegate.m */; };
+		AF3C58101BDCB2E300357901 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3C580F1BDCB2E300357901 /* ViewController.m */; };
+		AF3C58151BDCB2E300357901 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF3C58141BDCB2E300357901 /* Assets.xcassets */; };
+		AF3C58231BDCB2E300357901 /* LPLineChartViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3C58221BDCB2E300357901 /* LPLineChartViewDemoUITests.m */; };
+		AF3C58301BDCB3BE00357901 /* LPLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3C582F1BDCB3BE00357901 /* LPLineChartView.m */; };
+		AF3C58331BDCD02D00357901 /* LPLineChartViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3C58321BDCD02D00357901 /* LPLineChartViewLayout.m */; };
+		AF3C58361BDCECE300357901 /* LPLineChartViewCustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3C58351BDCECE300357901 /* LPLineChartViewCustomLayout.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF3C581F1BDCB2E300357901 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF3C57FD1BDCB2E300357901 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF3C58041BDCB2E300357901;
+			remoteInfo = LPLineChartViewDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AF3C58051BDCB2E300357901 /* LPLineChartViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPLineChartViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF3C58091BDCB2E300357901 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AF3C580B1BDCB2E300357901 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AF3C580C1BDCB2E300357901 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AF3C580E1BDCB2E300357901 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AF3C580F1BDCB2E300357901 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AF3C58141BDCB2E300357901 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF3C58191BDCB2E300357901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF3C581E1BDCB2E300357901 /* LPLineChartViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LPLineChartViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF3C58221BDCB2E300357901 /* LPLineChartViewDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPLineChartViewDemoUITests.m; sourceTree = "<group>"; };
+		AF3C58241BDCB2E300357901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF3C582E1BDCB3BE00357901 /* LPLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LPLineChartView.h; path = ../LPLineChartView/LPLineChartView.h; sourceTree = "<group>"; };
+		AF3C582F1BDCB3BE00357901 /* LPLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LPLineChartView.m; path = ../LPLineChartView/LPLineChartView.m; sourceTree = "<group>"; };
+		AF3C58311BDCD02D00357901 /* LPLineChartViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LPLineChartViewLayout.h; path = ../LPLineChartView/LPLineChartViewLayout.h; sourceTree = "<group>"; };
+		AF3C58321BDCD02D00357901 /* LPLineChartViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LPLineChartViewLayout.m; path = ../LPLineChartView/LPLineChartViewLayout.m; sourceTree = "<group>"; };
+		AF3C58341BDCECE300357901 /* LPLineChartViewCustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LPLineChartViewCustomLayout.h; path = ../LPLineChartView/LPLineChartViewCustomLayout.h; sourceTree = "<group>"; };
+		AF3C58351BDCECE300357901 /* LPLineChartViewCustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LPLineChartViewCustomLayout.m; path = ../LPLineChartView/LPLineChartViewCustomLayout.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF3C58021BDCB2E300357901 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF3C581B1BDCB2E300357901 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF3C57FC1BDCB2E300357901 = {
+			isa = PBXGroup;
+			children = (
+				AF3C582D1BDCB39600357901 /* LPLineChartView */,
+				AF3C58071BDCB2E300357901 /* LPLineChartViewDemo */,
+				AF3C58211BDCB2E300357901 /* LPLineChartViewDemoUITests */,
+				AF3C58061BDCB2E300357901 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF3C58061BDCB2E300357901 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF3C58051BDCB2E300357901 /* LPLineChartViewDemo.app */,
+				AF3C581E1BDCB2E300357901 /* LPLineChartViewDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF3C58071BDCB2E300357901 /* LPLineChartViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				AF3C580B1BDCB2E300357901 /* AppDelegate.h */,
+				AF3C580C1BDCB2E300357901 /* AppDelegate.m */,
+				AF3C580E1BDCB2E300357901 /* ViewController.h */,
+				AF3C580F1BDCB2E300357901 /* ViewController.m */,
+				AF3C58141BDCB2E300357901 /* Assets.xcassets */,
+				AF3C58191BDCB2E300357901 /* Info.plist */,
+				AF3C58081BDCB2E300357901 /* Supporting Files */,
+			);
+			path = LPLineChartViewDemo;
+			sourceTree = "<group>";
+		};
+		AF3C58081BDCB2E300357901 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AF3C58091BDCB2E300357901 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AF3C58211BDCB2E300357901 /* LPLineChartViewDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AF3C58221BDCB2E300357901 /* LPLineChartViewDemoUITests.m */,
+				AF3C58241BDCB2E300357901 /* Info.plist */,
+			);
+			path = LPLineChartViewDemoUITests;
+			sourceTree = "<group>";
+		};
+		AF3C582D1BDCB39600357901 /* LPLineChartView */ = {
+			isa = PBXGroup;
+			children = (
+				AF3C582E1BDCB3BE00357901 /* LPLineChartView.h */,
+				AF3C582F1BDCB3BE00357901 /* LPLineChartView.m */,
+				AF3C58311BDCD02D00357901 /* LPLineChartViewLayout.h */,
+				AF3C58321BDCD02D00357901 /* LPLineChartViewLayout.m */,
+				AF3C58341BDCECE300357901 /* LPLineChartViewCustomLayout.h */,
+				AF3C58351BDCECE300357901 /* LPLineChartViewCustomLayout.m */,
+			);
+			name = LPLineChartView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF3C58041BDCB2E300357901 /* LPLineChartViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF3C58271BDCB2E300357901 /* Build configuration list for PBXNativeTarget "LPLineChartViewDemo" */;
+			buildPhases = (
+				AF3C58011BDCB2E300357901 /* Sources */,
+				AF3C58021BDCB2E300357901 /* Frameworks */,
+				AF3C58031BDCB2E300357901 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LPLineChartViewDemo;
+			productName = LPLineChartViewDemo;
+			productReference = AF3C58051BDCB2E300357901 /* LPLineChartViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AF3C581D1BDCB2E300357901 /* LPLineChartViewDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF3C582A1BDCB2E300357901 /* Build configuration list for PBXNativeTarget "LPLineChartViewDemoUITests" */;
+			buildPhases = (
+				AF3C581A1BDCB2E300357901 /* Sources */,
+				AF3C581B1BDCB2E300357901 /* Frameworks */,
+				AF3C581C1BDCB2E300357901 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF3C58201BDCB2E300357901 /* PBXTargetDependency */,
+			);
+			name = LPLineChartViewDemoUITests;
+			productName = LPLineChartViewDemoUITests;
+			productReference = AF3C581E1BDCB2E300357901 /* LPLineChartViewDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF3C57FD1BDCB2E300357901 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = loopeer;
+				TargetAttributes = {
+					AF3C58041BDCB2E300357901 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					AF3C581D1BDCB2E300357901 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = AF3C58041BDCB2E300357901;
+					};
+				};
+			};
+			buildConfigurationList = AF3C58001BDCB2E300357901 /* Build configuration list for PBXProject "LPLineChartViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF3C57FC1BDCB2E300357901;
+			productRefGroup = AF3C58061BDCB2E300357901 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF3C58041BDCB2E300357901 /* LPLineChartViewDemo */,
+				AF3C581D1BDCB2E300357901 /* LPLineChartViewDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF3C58031BDCB2E300357901 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF3C58151BDCB2E300357901 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF3C581C1BDCB2E300357901 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF3C58011BDCB2E300357901 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF3C58101BDCB2E300357901 /* ViewController.m in Sources */,
+				AF3C58301BDCB3BE00357901 /* LPLineChartView.m in Sources */,
+				AF3C580D1BDCB2E300357901 /* AppDelegate.m in Sources */,
+				AF3C58331BDCD02D00357901 /* LPLineChartViewLayout.m in Sources */,
+				AF3C58361BDCECE300357901 /* LPLineChartViewCustomLayout.m in Sources */,
+				AF3C580A1BDCB2E300357901 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF3C581A1BDCB2E300357901 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF3C58231BDCB2E300357901 /* LPLineChartViewDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF3C58201BDCB2E300357901 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF3C58041BDCB2E300357901 /* LPLineChartViewDemo */;
+			targetProxy = AF3C581F1BDCB2E300357901 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AF3C58251BDCB2E300357901 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AF3C58261BDCB2E300357901 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF3C58281BDCB2E300357901 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				INFOPLIST_FILE = LPLineChartViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopeer.LPLineChartViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AF3C58291BDCB2E300357901 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				INFOPLIST_FILE = LPLineChartViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopeer.LPLineChartViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AF3C582B1BDCB2E300357901 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LPLineChartViewDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopeer.LPLineChartViewDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LPLineChartViewDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		AF3C582C1BDCB2E300357901 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LPLineChartViewDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopeer.LPLineChartViewDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LPLineChartViewDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF3C58001BDCB2E300357901 /* Build configuration list for PBXProject "LPLineChartViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF3C58251BDCB2E300357901 /* Debug */,
+				AF3C58261BDCB2E300357901 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF3C58271BDCB2E300357901 /* Build configuration list for PBXNativeTarget "LPLineChartViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF3C58281BDCB2E300357901 /* Debug */,
+				AF3C58291BDCB2E300357901 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF3C582A1BDCB2E300357901 /* Build configuration list for PBXNativeTarget "LPLineChartViewDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF3C582B1BDCB2E300357901 /* Debug */,
+				AF3C582C1BDCB2E300357901 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AF3C57FD1BDCB2E300357901 /* Project object */;
+}
