@@ -16,9 +16,7 @@ LPLineChartViewCustomLayout继承自LPLineChartViewLayout，实现了所有需�
 
 [备用链接](http://e.picphotos.baidu.com/album/s%3D680%3Bq%3D90/sign=031946f3793e6709ba0046f70bfcee00/b3fb43166d224f4a843bc9c70ff790529922d140.jpg)
 
-![](https://github.com/xiaofei86/LPLineChartView/raw/master/Images/1.png)
-
-
+<img src = "https://github.com/xiaofei86/LPLineChartView/raw/master/Images/1.png" width = 373>
 
 #LPLineChartViewLayout
 
@@ -115,3 +113,5 @@ xKey：通过yKey在数组中拿到每个点需要显示的文字
 	_yKey = @"grade";
 	_xRankKey = @"id";
 	_xKey = @"name";
+	
+>*已在APP"中华写字课堂"、“帮推客”中使用*
