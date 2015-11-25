@@ -8,7 +8,7 @@ LPLineChartViewCustomLayout继承自LPLineChartViewLayout，实现了所有需�
 
 这样就提供了既简单又可高度定制的折线图。下边我自己实现了几种效果，这些效果均在10行代码以内实现。如下。(右上角样式为LPLineChartViewCustomLayout)
 
-注：VPN设为全局模式才可以查看图片，如果不能点击[备用链接](http://b.picphotos.baidu.com/album/s%3D1000%3Bq%3D90/sign=088f6bed7dec54e745ec1e1e8908a021/8326cffc1e178a8290b19973f003738da877e850.jpg)
+注：如果图片不能显示请尝试将VPN设为全局模式，也可以通过[备用链接](http://b.picphotos.baidu.com/album/s%3D1000%3Bq%3D90/sign=088f6bed7dec54e745ec1e1e8908a021/8326cffc1e178a8290b19973f003738da877e850.jpg)查看
 
 ![](https://github.com/xiaofei86/LPLineChartView/raw/master/Images/chart4.png)
 
