@@ -17,17 +17,17 @@
                        yRange:(NSRange)yRange
                        ySpace:(CGFloat)ySpace
                          yKey:(NSString *)yKey
-                     xRankKey:(NSString *)xRankKey
                          xKey:(NSString *)xKey;
 
-@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSArray<NSDictionary *> *data;
+@property (nonatomic, copy) NSString *xKey;
+@property (nonatomic, copy) NSString *yKey;
 
 @property (nonatomic, assign) NSRange yRange;
 @property (nonatomic, assign) CGFloat ySpace;
-@property (nonatomic, strong) NSString *yKey;
 
-@property (nonatomic, strong) NSString *xRankKey;
-@property (nonatomic, strong) NSString *xKey;
+@property (nonatomic, copy) NSString *xRankKey;
+@property (nonatomic, strong) NSArray<NSString *> *xData;
 
 @property (nonatomic, strong) LPLineChartViewLayout *layout;
 

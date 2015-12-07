@@ -17,6 +17,7 @@ static CGFloat textInterval = 8;
     CGRect _chartFrame;
     UIEdgeInsets _axisEdge;
     UIEdgeInsets _chartEdge;
+    NSRange _validRange;
     
     NSInteger _countX;
     NSInteger _countY;
@@ -27,24 +28,16 @@ static CGFloat textInterval = 8;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _data = @[@{@"id": @"1", @"name":@"1", @"grade":@"30"},
-                 @{@"id": @"2", @"name":@"2", @"grade":@"40"},
-                 @{@"id": @"3", @"name":@"3", @"grade":@"62"},
-                 @{@"id": @"4", @"name":@"4", @"grade":@"76"},
-                 @{@"id": @"5", @"name":@"5", @"grade":@"79"},
-                 @{@"id": @"6", @"name":@"6", @"grade":@"90"},
-                 @{@"id": @"7", @"name":@"7", @"grade":@"86"},
-                 @{@"id": @"8", @"name":@"8", @"grade":@"71"},
-                 @{@"id": @"9", @"name":@"9", @"grade":@"100"},
-                 @{@"id": @"10", @"name":@"10", @"grade":@"87"}];
-        _yRange = NSMakeRange(0, 100);
-        _ySpace = 20;
-        _yKey = @"grade";
-        _xRankKey = @"id";
-        _xKey = @"name";
+        self.data = [NSArray array];
+        self.yRange = NSMakeRange(0, 0);
+        self.ySpace = 0;
         
-        _countX = _data.count;
-        _countY = ceilf(_yRange.length / _ySpace) + 1;
+        _xData = nil;
+        _xRankKey = [NSString string];
+        _yKey = [NSString string];
+        _xKey = [NSString string];
+        
+        self.layout = [LPLineChartViewLayout new];
         
         self.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
@@ -57,29 +50,39 @@ static CGFloat textInterval = 8;
                        yRange:(NSRange)yRange
                        ySpace:(CGFloat)ySpace
                          yKey:(NSString *)yKey
-                     xRankKey:(NSString *)xRankKey
                          xKey:(NSString *)xKey {
     self = [super initWithFrame:frame];
     if (self) {
-        _data = data;
-        _yRange = yRange;
-        _ySpace = ySpace;
-        _yKey = yKey;
-        _xRankKey = xRankKey;
+        self.data = data;
+        self.yRange = yRange;
+        self.ySpace = ySpace;
+        
+        _xData = nil;
+        _xRankKey = nil;
         _xKey = xKey;
+        _yKey = yKey;
         
-        _countX = _data.count;
-        _countY = ceilf(_yRange.length / _ySpace) + 1;
-        
-        _layout = layout;
+        self.layout = layout;
     }
     return self;
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    self.data = _data;
+    self.yRange = _yRange;
+    self.ySpace = _ySpace;
+    
+    [self.layer addSublayer:[self creatBackground]];
+    [self.layer addSublayer:[self creatAxis:LPAxisX]];
+    [self.layer addSublayer:[self creatAxis:LPAxisY]];
+    [self.layer addSublayer:[self creatChart]];
 }
 
 #pragma mark - Accessor
 
 - (void)setLayout:(LPLineChartViewLayout *)layout {
-    
     _layout = layout;
     
     _axisEdge.right = [_layout endSpaceForAxis:LPAxisY];
@@ -90,16 +93,25 @@ static CGFloat textInterval = 8;
     _chartFrame.origin.y = self.bounds.size.height - _chartEdge.bottom;
     _chartFrame.size.width = self.bounds.size.width - _chartEdge.left - _chartEdge.right;
     _chartFrame.size.height = self.bounds.size.height - _chartEdge.top - _chartEdge.bottom;
-    
-    [self.layer addSublayer:[self creatBackground]];
-    [self.layer addSublayer:[self creatAxis:LPAxisX]];
-    [self.layer addSublayer:[self creatAxis:LPAxisY]];
-    [self.layer addSublayer:[self creatChart]];
 }
 
 - (void)setData:(NSArray *)data {
     _data = data;
     _countX = _data.count;
+    
+    NSInteger firstValid = 0;
+    NSInteger lastValid = 0;
+    for (firstValid = 0; firstValid < _countX; firstValid++) {
+        if ([self isValidUnit:firstValid]) {
+            break;
+        }
+    }
+    for (lastValid = _countX - 1; lastValid >= 0; lastValid--) {
+        if ([self isValidUnit:lastValid]) {
+            break;
+        }
+    }
+    _validRange = NSMakeRange(firstValid, lastValid - firstValid + 1);
 }
 
 - (void)setYRange:(NSRange)yRange {
@@ -133,13 +145,17 @@ static CGFloat textInterval = 8;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     CAShapeLayer *layer = [CAShapeLayer layer];
-    for (int i = 0; i < _countX; i++) {
+    for (NSUInteger i = _validRange.location; i < _validRange.location + _validRange.length; i++) {
+        if (![self isValidUnit:i]) {
+            continue;
+        }
         float x = i * intervalX;
         float y = [[_data[i] objectForKey:_yKey] floatValue] * unitY;
         CGPoint point = CGPointMake(_chartFrame.origin.x + x, _chartFrame.origin.y - y);
-        if (i == 0) {
-            [path moveToPoint:point];
-        } else if (i == _countX - 1) {
+        if (i == _validRange.location) {
+            [path moveToPoint:CGPointMake(point.x, _chartFrame.origin.y)];
+            [path addLineToPoint:point];
+        } else if (i == _validRange.location + _validRange.length - 1) {
             [path addLineToPoint:point];
             [path addLineToPoint:CGPointMake(point.x, _chartFrame.origin.y)];
             [path addLineToPoint:CGPointMake(_chartFrame.origin.x, _chartFrame.origin.y)];
@@ -272,7 +288,23 @@ static CGFloat textInterval = 8;
 - (CALayer *)creatTexts:(LPAxis)axis {
     CAShapeLayer *rootLayer = [CAShapeLayer layer];
     
-    if (axis == LPAxisX) {
+    if (axis == LPAxisX && _xData) {
+        NSUInteger textCount = _xData.count;
+        float interval = textCount == 1? 0: (_chartFrame.size.width - _axisEdge.right) / (textCount - 1);
+        
+        for (int i = 0; i < textCount; i++) {
+            CATextLayer *layer = [_layout textForAxis:LPAxisX];
+            layer.string = _xData[i];
+            CGFloat textWidth = [LPLineChartViewLayout textWidthWithString:layer.string font:layer.font];
+            layer.bounds = CGRectMake(0, 0, textWidth, layer.fontSize + 2);
+            layer.position = CGPointMake(_chartFrame.origin.x + i * interval,
+                                         _chartFrame.origin.y
+                                         + layer.fontSize / 2
+                                         + textInterval);
+            [rootLayer addSublayer:layer];
+        }
+
+    } else if (axis == LPAxisX && !_xData) {
         float interval = _countX == 1? 0: (_chartFrame.size.width - _axisEdge.right) / (_countX - 1);
         
         for (int i = 0; i < _countX; i++) {
@@ -286,7 +318,7 @@ static CGFloat textInterval = 8;
                                          + textInterval);
             [rootLayer addSublayer:layer];
         }
-
+        
     } else if (axis == LPAxisY) {
         float interval = _countY == 1? 0: (_chartFrame.size.height - _axisEdge.top) / (_countY - 1);
         
@@ -321,11 +353,15 @@ static CGFloat textInterval = 8;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     CAShapeLayer *layer = [CAShapeLayer layer];
-    for (int i = 0; i < _countX; i++) {
+    
+    for (NSUInteger i = _validRange.location; i < _validRange.location + _validRange.length; i++) {
+        if (![self isValidUnit:i]) {
+            continue;
+        }
         float x = i * intervalX;
         float y = [[_data[i] objectForKey:_yKey] floatValue] * unitY;
         CGPoint point = CGPointMake(_chartFrame.origin.x + x, _chartFrame.origin.y - y);
-        if (i == 0) {
+        if (i == _validRange.location) {
             [path moveToPoint:point];
         } else {
             [path addLineToPoint:point];
@@ -344,7 +380,10 @@ static CGFloat textInterval = 8;
     float intervalX = _countX == 1? 0: (_chartFrame.size.width - _axisEdge.right) / (_countX - 1);
     float unitY = (_chartFrame.size.height - _axisEdge.top) / _yRange.length;
     
-    for (int i = 0; i < _countX; i++) {
+    for (NSUInteger i = _validRange.location; i < _validRange.location + _validRange.length; i++) {
+        if (![self isValidUnit:i]) {
+            continue;
+        }
         float x = i * intervalX;
         float y = [[_data[i] objectForKey:_yKey] floatValue] * unitY;
         
@@ -355,6 +394,21 @@ static CGFloat textInterval = 8;
     }
     
     return rootLayer;
+}
+
+#pragma mark - Private
+
+- (BOOL)isValidUnit:(NSUInteger)count {
+    NSDictionary *dictionary = _data[count];
+    if (dictionary == nil
+        || dictionary.count == 0
+        || dictionary[_yKey] == nil
+        || dictionary[_yKey] == [NSNull null]
+        || [dictionary[_yKey] isEqualToString:@""]) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end
