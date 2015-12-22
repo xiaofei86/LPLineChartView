@@ -74,12 +74,7 @@
 
 + (CGFloat)textWidthWithString:(NSString *)string font:(UIFont *)font {
     CGSize maxsize = CGSizeMake(80, font.pointSize);
-    CGSize size = [string boundingRectWithSize:maxsize
-                                       options:NSStringDrawingTruncatesLastVisibleLine
-                   |NSStringDrawingUsesLineFragmentOrigin
-                   |NSStringDrawingUsesFontLeading
-                                    attributes:@{NSFontAttributeName:font}
-                                       context:nil].size;
+    CGSize size = [string.description boundingRectWithSize:maxsize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil].size;
     return size.width;
 }
 

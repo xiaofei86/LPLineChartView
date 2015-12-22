@@ -74,10 +74,23 @@ static CGFloat textInterval = 8;
     self.yRange = _yRange;
     self.ySpace = _ySpace;
     
-    [self.layer addSublayer:[self creatBackground]];
+    [self draw];
+}
+
+- (void)reloadViews {
+    [self.layer.sublayers makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    [self draw];
+}
+
+- (void)draw {
+    if (_countY > 0 && _countX > _validRange.location) {
+        [self.layer addSublayer:[self creatBackground]];
+    }
     [self.layer addSublayer:[self creatAxis:LPAxisX]];
     [self.layer addSublayer:[self creatAxis:LPAxisY]];
-    [self.layer addSublayer:[self creatChart]];
+    if (_countY > 0 && _countX > _validRange.location) {
+        [self.layer addSublayer:[self creatChart]];
+    }
 }
 
 #pragma mark - Accessor
@@ -213,7 +226,8 @@ static CGFloat textInterval = 8;
     CALayer *layer = [CALayer layer];
     [layer addSublayer:[self creatLines:axis]];
     [layer addSublayer:[self creatArrows:axis]];
-    if (_countX >= 1.0 && _countY >= 1.0) {
+    if ((axis == LPAxisY && _countY > 0)
+        || (axis == LPAxisX && _countX > _validRange.location)) {
         [layer addSublayer:[self creatPoints:axis]];
         [layer addSublayer:[self creatTexts:axis]];
     }
@@ -294,7 +308,7 @@ static CGFloat textInterval = 8;
         
         for (int i = 0; i < textCount; i++) {
             CATextLayer *layer = [_layout textForAxis:LPAxisX];
-            layer.string = _xData[i];
+            layer.string = _xData[i].description;
             CGFloat textWidth = [LPLineChartViewLayout textWidthWithString:layer.string font:layer.font];
             layer.bounds = CGRectMake(0, 0, textWidth, layer.fontSize + 2);
             layer.position = CGPointMake(_chartFrame.origin.x + i * interval,
@@ -309,7 +323,7 @@ static CGFloat textInterval = 8;
         
         for (int i = 0; i < _countX; i++) {
             CATextLayer *layer = [_layout textForAxis:LPAxisX];
-            layer.string = [_data[i] objectForKey:_xKey];
+            layer.string = [[_data[i] objectForKey:_xKey] description];
             CGFloat textWidth = [LPLineChartViewLayout textWidthWithString:layer.string font:layer.font];
             layer.bounds = CGRectMake(0, 0, textWidth, layer.fontSize + 2);
             layer.position = CGPointMake(_chartFrame.origin.x + i * interval,
@@ -400,11 +414,12 @@ static CGFloat textInterval = 8;
 
 - (BOOL)isValidUnit:(NSUInteger)count {
     NSDictionary *dictionary = _data[count];
+    
     if (dictionary == nil
         || dictionary.count == 0
         || dictionary[_yKey] == nil
         || dictionary[_yKey] == [NSNull null]
-        || [dictionary[_yKey] isEqualToString:@""]) {
+        || ([dictionary[_yKey] isKindOfClass:[NSString class]] && [dictionary[_yKey] isEqualToString:@""])) {
         return NO;
     } else {
         return YES;

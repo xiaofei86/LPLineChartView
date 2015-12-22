@@ -19,6 +19,8 @@
                          yKey:(NSString *)yKey
                          xKey:(NSString *)xKey;
 
+- (void)reloadViews;
+
 @property (nonatomic, strong) NSArray<NSDictionary *> *data;
 @property (nonatomic, copy) NSString *xKey;
 @property (nonatomic, copy) NSString *yKey;
