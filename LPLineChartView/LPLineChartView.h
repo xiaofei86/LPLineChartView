@@ -35,6 +35,7 @@
 @property (nonatomic, copy) NSString *xRankKey;
 @property (nonatomic, strong) NSArray<NSString *> *xData;
 
+@property (nonatomic, assign) NSInteger xMinCount;
 @property (nonatomic, assign) NSInteger xMaxCount;
 
 @end

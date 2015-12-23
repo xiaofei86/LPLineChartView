@@ -113,7 +113,7 @@ static CGFloat textInterval = 8;
     _countX = _data.count;
     [self confirmValidRange];
     
-    if (_xMaxCount) {
+    if (_xMaxCount || _xMinCount) {
         _arrangeData = [self arrangeData:_data];
     } else {
         _arrangeData = [_data copy];
@@ -134,6 +134,11 @@ static CGFloat textInterval = 8;
     }
 }
 
+- (void)setXMinCount:(NSInteger)xMinCount {
+    _xMinCount = xMinCount;
+    _arrangeData = [self arrangeData:_data];
+}
+
 - (void)setXMaxCount:(NSInteger)xMaxCount {
     _xMaxCount = xMaxCount;
     _arrangeData = [self arrangeData:_data];
@@ -143,13 +148,15 @@ static CGFloat textInterval = 8;
 
 - (CALayer *)creatBackground {
     CALayer *layer = [CALayer layer];
+    //_count_x incloud the placeholder count.
     if (_countX > _validRange.location) {
         [layer addSublayer:[self creatRefrence:LPAxisX]];
     }
     if (_countY > 0) {
         [layer addSublayer:[self creatRefrence:LPAxisY]];
     }
-    if (_countY > 0 && _countX > _validRange.location) {
+    //_data.count is the real count.
+    if (_countY > 0 && _data.count > _validRange.location) {
         [layer addSublayer:[self creatGradient]];
     }
     return layer;
@@ -447,19 +454,35 @@ static CGFloat textInterval = 8;
 }
 
 - (NSArray *)arrangeData:(NSArray *)array {
-    NSMutableArray *mArray = [array mutableCopy];
-    NSInteger interval = 1;
-    if (mArray.count > _xMaxCount) {
-        while (floor((mArray.count - 1) / interval) + 1 > _xMaxCount) {
-            interval++;
-        }
+    NSInteger max = _xMaxCount;
+    NSInteger min = _xMinCount;
+    if (_xMinCount > _xMaxCount) {
+        max = _xMinCount;
+        min = _xMaxCount;
     }
-    for (int i = 0; i < mArray.count; i++) {
-        if (i % interval != 0) {
-            NSMutableDictionary *mDictionary = [mArray[i] mutableCopy];
-            mDictionary[_xKey] = [NSString string];
-            mArray[i] = mDictionary;
+    
+    NSMutableArray *mArray = [array mutableCopy];
+    if (_countX > max) {
+        NSInteger interval = 1;
+        if (mArray.count > max) {
+            while (floor((mArray.count - 1) / interval) + 1 > max) {
+                interval++;
+            }
         }
+        for (int i = 0; i < mArray.count; i++) {
+            if (i % interval != 0) {
+                NSMutableDictionary *mDictionary = [mArray[i] mutableCopy];
+                mDictionary[_xKey] = [NSString string];
+                mArray[i] = mDictionary;
+            }
+        }
+        return mArray;
+    } else if (_countX < min) {
+        for (NSInteger i = _countX; i < min; i++) {
+            NSDictionary *dictionary = @{_xKey:@"", _yKey:@"", _xRankKey:@19940406};
+            [mArray addObject:dictionary];
+        }
+        _countX = min;
     }
     return mArray;
 }
