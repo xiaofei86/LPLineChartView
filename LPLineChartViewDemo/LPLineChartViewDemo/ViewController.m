@@ -49,8 +49,8 @@
     _lineChartView.xRankKey = @"id";
     _lineChartView.yKey = @"grade";
     _lineChartView.xKey = @"name";
+    _lineChartView.xMaxCount = 7;
     //_lineChartView.xData = @[@"123", @"456", @"789", @"10"];
-    
     _lineChartView.layout = [[LPLineChartViewCustomLayout alloc] init];
     [self.view addSubview:_lineChartView];
 }

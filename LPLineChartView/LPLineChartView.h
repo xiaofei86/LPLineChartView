@@ -21,6 +21,10 @@
 
 - (void)reloadViews;
 
+@property (nonatomic, strong) LPLineChartViewLayout *layout;
+
+#pragma mark - DataSource
+
 @property (nonatomic, strong) NSArray<NSDictionary *> *data;
 @property (nonatomic, copy) NSString *xKey;
 @property (nonatomic, copy) NSString *yKey;
@@ -31,6 +35,6 @@
 @property (nonatomic, copy) NSString *xRankKey;
 @property (nonatomic, strong) NSArray<NSString *> *xData;
 
-@property (nonatomic, strong) LPLineChartViewLayout *layout;
+@property (nonatomic, assign) NSInteger xMaxCount;
 
 @end

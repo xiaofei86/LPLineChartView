@@ -14,6 +14,8 @@
 static CGFloat textInterval = 8;
 
 @implementation LPLineChartView {
+    NSArray<NSDictionary *> *_arrangeData;
+    
     CGRect _chartFrame;
     UIEdgeInsets _axisEdge;
     UIEdgeInsets _chartEdge;
@@ -83,9 +85,7 @@ static CGFloat textInterval = 8;
 }
 
 - (void)draw {
-    if (_countY > 0 && _countX > _validRange.location) {
-        [self.layer addSublayer:[self creatBackground]];
-    }
+    [self.layer addSublayer:[self creatBackground]];
     [self.layer addSublayer:[self creatAxis:LPAxisX]];
     [self.layer addSublayer:[self creatAxis:LPAxisY]];
     if (_countY > 0 && _countX > _validRange.location) {
@@ -111,20 +111,13 @@ static CGFloat textInterval = 8;
 - (void)setData:(NSArray *)data {
     _data = data;
     _countX = _data.count;
+    [self confirmValidRange];
     
-    NSInteger firstValid = 0;
-    NSInteger lastValid = 0;
-    for (firstValid = 0; firstValid < _countX; firstValid++) {
-        if ([self isValidUnit:firstValid]) {
-            break;
-        }
+    if (_xMaxCount) {
+        _arrangeData = [self arrangeData:_data];
+    } else {
+        _arrangeData = [_data copy];
     }
-    for (lastValid = _countX - 1; lastValid >= 0; lastValid--) {
-        if ([self isValidUnit:lastValid]) {
-            break;
-        }
-    }
-    _validRange = NSMakeRange(firstValid, lastValid - firstValid + 1);
 }
 
 - (void)setYRange:(NSRange)yRange {
@@ -141,13 +134,24 @@ static CGFloat textInterval = 8;
     }
 }
 
+- (void)setXMaxCount:(NSInteger)xMaxCount {
+    _xMaxCount = xMaxCount;
+    _arrangeData = [self arrangeData:_data];
+}
+
 #pragma mark - creatBackground
 
 - (CALayer *)creatBackground {
     CALayer *layer = [CALayer layer];
-    [layer addSublayer:[self creatRefrence:LPAxisX]];
-    [layer addSublayer:[self creatRefrence:LPAxisY]];
-    [layer addSublayer:[self creatGradient]];
+    if (_countX > _validRange.location) {
+        [layer addSublayer:[self creatRefrence:LPAxisX]];
+    }
+    if (_countY > 0) {
+        [layer addSublayer:[self creatRefrence:LPAxisY]];
+    }
+    if (_countY > 0 && _countX > _validRange.location) {
+        [layer addSublayer:[self creatGradient]];
+    }
     return layer;
 }
 
@@ -323,7 +327,7 @@ static CGFloat textInterval = 8;
         
         for (int i = 0; i < _countX; i++) {
             CATextLayer *layer = [_layout textForAxis:LPAxisX];
-            layer.string = [[_data[i] objectForKey:_xKey] description];
+            layer.string = [[_arrangeData[i] objectForKey:_xKey] description];
             CGFloat textWidth = [LPLineChartViewLayout textWidthWithString:layer.string font:layer.font];
             layer.bounds = CGRectMake(0, 0, textWidth, layer.fontSize + 2);
             layer.position = CGPointMake(_chartFrame.origin.x + i * interval,
@@ -412,6 +416,22 @@ static CGFloat textInterval = 8;
 
 #pragma mark - Private
 
+- (void)confirmValidRange {
+    NSInteger firstValid = 0;
+    NSInteger lastValid = 0;
+    for (firstValid = 0; firstValid < _countX; firstValid++) {
+        if ([self isValidUnit:firstValid]) {
+            break;
+        }
+    }
+    for (lastValid = _countX - 1; lastValid >= 0; lastValid--) {
+        if ([self isValidUnit:lastValid]) {
+            break;
+        }
+    }
+    _validRange = NSMakeRange(firstValid, lastValid - firstValid + 1);
+}
+
 - (BOOL)isValidUnit:(NSUInteger)count {
     NSDictionary *dictionary = _data[count];
     
@@ -424,6 +444,24 @@ static CGFloat textInterval = 8;
     } else {
         return YES;
     }
+}
+
+- (NSArray *)arrangeData:(NSArray *)array {
+    NSMutableArray *mArray = [array mutableCopy];
+    NSInteger interval = 1;
+    if (mArray.count > _xMaxCount) {
+        while (floor((mArray.count - 1) / interval) + 1 > _xMaxCount) {
+            interval++;
+        }
+    }
+    for (int i = 0; i < mArray.count; i++) {
+        if (i % interval != 0) {
+            NSMutableDictionary *mDictionary = [mArray[i] mutableCopy];
+            mDictionary[_xKey] = [NSString string];
+            mArray[i] = mDictionary;
+        }
+    }
+    return mArray;
 }
 
 @end
