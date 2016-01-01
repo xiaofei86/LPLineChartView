@@ -131,7 +131,7 @@
     return layer;
 }
 
-- (CAGradientLayer *)GradientLayerForBackground {
+- (CAGradientLayer *)gradientLayerForBackground {
     
     CAGradientLayer *layer =  [CAGradientLayer layer];
     [layer setColors:@[(__bridge id)_topBackgroundColor.CGColor, (__bridge id)_bottomBackgroundColor.CGColor]];

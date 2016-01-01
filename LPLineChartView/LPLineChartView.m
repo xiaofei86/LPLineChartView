@@ -194,7 +194,7 @@ static CGFloat textInterval = 8;
     layer.fillColor = [UIColor whiteColor].CGColor;
     layer.path = path.CGPath;
     
-    CAGradientLayer *bgLayer = [_layout GradientLayerForBackground];
+    CAGradientLayer *bgLayer = [_layout gradientLayerForBackground];
     bgLayer.bounds = CGRectMake(_chartFrame.origin.x, _chartEdge.top + _axisEdge.top, 0, 0);
     bgLayer.frame = CGRectMake(_chartFrame.origin.x, _chartEdge.top + _axisEdge.top, _chartFrame.size.width - _axisEdge.right, _chartFrame.size.height - _axisEdge.top);
     bgLayer.mask = layer;

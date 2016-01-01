@@ -62,7 +62,7 @@
     return [CAShapeLayer layer];
 }
 
-- (CAGradientLayer *)GradientLayerForBackground {
+- (CAGradientLayer *)gradientLayerForBackground {
     return [CAGradientLayer layer];
 }
 

@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, LPAxis){
 - (CGFloat)widthForChart:(NSInteger)count;
 - (CAShapeLayer *)pointForChart:(NSInteger)count;
 
-- (CAGradientLayer *)GradientLayerForBackground;
+- (CAGradientLayer *)gradientLayerForBackground;
 - (CAShapeLayer *)refrenceForBackground:(LPAxis)axis withCount:(NSInteger)count;
 
 + (CGFloat)textWidthWithString:(NSString *)string font:(UIFont *)font;
