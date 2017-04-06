@@ -1,4 +1,4 @@
-#LPLineChartView
+# LPLineChartView
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/xiaofei86/LPLineChartView/master/LICENSE)&nbsp;
 [![PLATFORM](https://img.shields.io/cocoapods/p/LPNetworking.svg?style=flat)](https://developer.apple.com/library/ios/navigation/)&nbsp;
@@ -24,9 +24,9 @@ LPLineChartViewCustomLayout继承自LPLineChartViewLayout，实现了所有需�
 
 <img src = "https://github.com/xiaofei86/LPLineChartView/raw/master/Images/1.png" width = 373>
 
-#Usage
+# Usage
 
-####LPLineChartViewLayout
+#### LPLineChartViewLayout
 
 LPLineChartViewLayout可供设置的方法。
 
@@ -93,7 +93,7 @@ LPLineChartViewCustomLayout可供设置的属性。
 @property (nonatomic, strong) UIColor *axisPointColor;
 ```
 	
-####DataSource
+#### DataSource
 
 数据源采用数组注入的方式。
 
@@ -133,7 +133,7 @@ _xRankKey = @"id";
 _xKey = @"name";
 ```
 	
-#More
+# More
 
 * 如果数据源中某个点的值为null，那么图表将会跳过该点直接于下一个点相连。如果为null的点在数据源头或尾，那么头或尾将会空去一部分。
 
