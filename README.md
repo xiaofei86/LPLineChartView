@@ -3,24 +3,17 @@
 [![LICENSE](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/xiaofei86/LPLineChartView/master/LICENSE)&nbsp;
 [![PLATFORM](https://img.shields.io/cocoapods/p/LPNetworking.svg?style=flat)](https://developer.apple.com/library/ios/navigation/)&nbsp;
 [![SUPPORT](https://img.shields.io/badge/support-iOS%207%2B%20-blue.svg?style=flat)](https://en.wikipedia.org/wiki/IOS_7)&nbsp;
-[![BLOG](https://img.shields.io/badge/blog-xuyafei.cn-orange.svg?style=flat)](http://xuyafei.cn)&nbsp;
 
-参照UICollectionview的架构实现的折线图LPLineChartView。将布局交给Layout实现，通过Layer进行绘制。提供“虚基类”LPLineChartViewLayout定义需要的空方法。在LPLineChartView里用指针指向LPLineChartViewLayout的实例。
+类似UICollectionview使用方式的折线图LPLineChartView。将布局交给Layout实现，通过Layer进行绘制。提供“虚基类”LPLineChartViewLayout定义需要的空方法。在LPLineChartView里用指针指向LPLineChartViewLayout的实例。
 
-在这种设计模式下，UICollectionview基本所有与UI相关的部件全都通过Layout去获取对应的Layer。这样的好处类似于UICollectionview，基本可是实现任何想要的布局。比如：轴线、箭头、数据点、连接线、参考线、轴线文字、背景等都是通过Layout去获取对应的Layer。这样你就可以充分开发脑洞去绘制任何想要的效果。（任何形状，贝塞尔曲线，渐变，字体，甚至图片，遮罩都是可以的）当然，这种模式下，必然导致使用的难度极度增加。所以就必须提供一个默认实现LPLineChartViewCustomLayout。（类似UICollectionview的UICollectionviewFlowLayout）
-
-LPLineChartViewCustomLayout继承自LPLineChartViewLayout，实现了所有需要定制的内容。然后在头文件中提供参数去调整布局过程中的主要样式。通过这些参数基本可以实现大部分对折线图的个性化定制。
+基本所有与UI相关的部件（轴线、箭头、数据点、连接线、参考线、轴线文字、背景）全都通过Layout去获取对应的Layer，基本可是实现任何想要的布局。这样你就可以去绘制任何想要的效果（形状，贝塞尔曲线，渐变，字体，图片，遮罩）。框架提供一个默认实现LPLineChartViewCustomLayout作为默认实现。LPLineChartViewCustomLayout继承自LPLineChartViewLayout，实现了所有需要定制的内容。然后在头文件中提供参数去调整布局过程中的主要样式。通过这些参数基本可以实现大部分对折线图的个性化定制。
 
 在使用的时候通过子类化LPLineChartViewCustomLayout，在prepareLayout方法中重新设置这些参数或者部分，被设置的部分就会覆盖LPLineChartViewCustomLayout的默认值。
 如果个别地方实在不能满足需求，也可以通过在子类中重新实现部分相关的方法去通过Layer自由定制。
 
 通过两种方案的结合就提供了使用既简单又可高度定制的折线图。下边实现了几种展示效果，这些效果均在10行代码以内实现。如下。(右上角样式为LPLineChartViewCustomLayout)
 
-[图片备用链接](http://b.picphotos.baidu.com/album/s%3D1000%3Bq%3D90/sign=088f6bed7dec54e745ec1e1e8908a021/8326cffc1e178a8290b19973f003738da877e850.jpg)
-
 ![](https://github.com/xiaofei86/LPLineChartView/raw/master/Images/chart4.png)
-
-[图片备用链接](http://e.picphotos.baidu.com/album/s%3D680%3Bq%3D90/sign=031946f3793e6709ba0046f70bfcee00/b3fb43166d224f4a843bc9c70ff790529922d140.jpg)
 
 <img src = "https://github.com/xiaofei86/LPLineChartView/raw/master/Images/1.png" width = 373>
 
@@ -142,8 +135,5 @@ _xKey = @"name";
 * 图片可以设置数据点个数的上限和下限。设置下限后，如果数据点个数不足，图表的后边将会用数据点补足。设置上限后，超过上限后将会智能隐藏一部分x轴文字同时保证x轴每个点间距相等。具体的算法于number相似，有兴趣可以通过demo探求。
 
 * 如果x轴数据是固定的，不需要和数据点对应，可以通过xData数组来设置固定值。
-
-
-[图片备用链接](http://b.picphotos.baidu.com/album/s%3D1000%3Bq%3D90/sign=9a161f7108b30f24319ae803f8a5ea32/b17eca8065380cd770bc16fda644ad3459828104.jpg)
 
 ![](https://github.com/xiaofei86/LPLineChartView/raw/master/Images/chart4_test.png)
