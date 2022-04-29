@@ -4,9 +4,9 @@
 [![PLATFORM](https://img.shields.io/cocoapods/p/LPNetworking.svg?style=flat)](https://developer.apple.com/library/ios/navigation/)&nbsp;
 [![SUPPORT](https://img.shields.io/badge/support-iOS%207%2B%20-blue.svg?style=flat)](https://en.wikipedia.org/wiki/IOS_7)&nbsp;
 
-![](https://github.com/xiaofei86/LPLineChartView/raw/master/Images/chart4.png)
+类似 UICollectionview 使用方式的折线图 LPLineChartView，使用既简单又可高度定制。如下 4 种展示效果均在 10 行代码以内实现。
 
-类似 UICollectionview 使用方式的折线图 LPLineChartView，使用既简单又可高度定制。上述 4 种展示效果均在 10 行代码以内实现。
+![](https://github.com/xiaofei86/LPLineChartView/raw/master/Images/chart4.png)
 
 ## 使用
 
