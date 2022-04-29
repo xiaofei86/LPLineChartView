@@ -4,22 +4,13 @@
 [![PLATFORM](https://img.shields.io/cocoapods/p/LPNetworking.svg?style=flat)](https://developer.apple.com/library/ios/navigation/)&nbsp;
 [![SUPPORT](https://img.shields.io/badge/support-iOS%207%2B%20-blue.svg?style=flat)](https://en.wikipedia.org/wiki/IOS_7)&nbsp;
 
-类似UICollectionview使用方式的折线图LPLineChartView。将布局交给Layout实现，通过Layer进行绘制。提供“虚基类”LPLineChartViewLayout定义需要的空方法。在LPLineChartView里用指针指向LPLineChartViewLayout的实例。
-
-基本所有与UI相关的部件（轴线、箭头、数据点、连接线、参考线、轴线文字、背景）全都通过Layout去获取对应的Layer，基本可是实现任何想要的布局。这样你就可以去绘制任何想要的效果（形状，贝塞尔曲线，渐变，字体，图片，遮罩）。框架提供一个默认实现LPLineChartViewCustomLayout作为默认实现。LPLineChartViewCustomLayout继承自LPLineChartViewLayout，实现了所有需要定制的内容。然后在头文件中提供参数去调整布局过程中的主要样式。通过这些参数基本可以实现大部分对折线图的个性化定制。
-
-在使用的时候通过子类化LPLineChartViewCustomLayout，在prepareLayout方法中重新设置这些参数或者部分，被设置的部分就会覆盖LPLineChartViewCustomLayout的默认值。
-如果个别地方实在不能满足需求，也可以通过在子类中重新实现部分相关的方法去通过Layer自由定制。
-
-通过两种方案的结合就提供了使用既简单又可高度定制的折线图。下边实现了几种展示效果，这些效果均在10行代码以内实现。如下。(右上角样式为LPLineChartViewCustomLayout)
-
 ![](https://github.com/xiaofei86/LPLineChartView/raw/master/Images/chart4.png)
 
-<img src = "https://github.com/xiaofei86/LPLineChartView/raw/master/Images/1.png" width = 373>
+类似 UICollectionview 使用方式的折线图 LPLineChartView，使用既简单又可高度定制。上述 4 种展示效果均在 10 行代码以内实现。
 
-# Usage
+## 使用
 
-#### LPLineChartViewLayout
+### LPLineChartViewLayout
 
 LPLineChartViewLayout可供设置的方法。
 
@@ -44,7 +35,7 @@ LPLineChartViewLayout可供设置的方法。
 + (CGFloat)textWidthWithString:(NSString *)string font:(UIFont *)font;
 ```
 
-#### LPLineChartViewCustomLayout
+### LPLineChartViewCustomLayout
 
 LPLineChartViewCustomLayout可供设置的属性。
 
@@ -86,7 +77,7 @@ LPLineChartViewCustomLayout可供设置的属性。
 @property (nonatomic, strong) UIColor *axisPointColor;
 ```
 	
-#### DataSource
+### DataSource
 
 数据源采用数组注入的方式。
 
@@ -125,8 +116,19 @@ _yKey = @"grade";
 _xRankKey = @"id";
 _xKey = @"name";
 ```
-	
-# More
+
+## 设计
+
+类似UICollectionview使用方式的折线图LPLineChartView。将布局交给Layout实现，通过Layer进行绘制。提供“虚基类”LPLineChartViewLayout定义需要的空方法。在LPLineChartView里用指针指向LPLineChartViewLayout的实例。
+
+基本所有与UI相关的部件（轴线、箭头、数据点、连接线、参考线、轴线文字、背景）全都通过Layout去获取对应的Layer，基本可是实现任何想要的布局。这样你就可以去绘制任何想要的效果（形状，贝塞尔曲线，渐变，字体，图片，遮罩）。框架提供一个默认实现LPLineChartViewCustomLayout作为默认实现。LPLineChartViewCustomLayout继承自LPLineChartViewLayout，实现了所有需要定制的内容，只需在头文件中提供参数去调整布局过程中的主要样式。通过这些参数基本可以实现大部分对折线图的个性化定制（4 种展示效果右上角样式为LPLineChartViewCustomLayout实现）。
+
+在使用的时候通过子类化LPLineChartViewCustomLayout，在prepareLayout方法中重新设置这些参数或者部分，被设置的部分就会覆盖LPLineChartViewCustomLayout的默认值。
+如果个别地方实在不能满足需求，也可以通过在子类中重新实现部分相关的方法去通过Layer自由定制。
+
+<img src = "https://github.com/xiaofei86/LPLineChartView/raw/master/Images/1.png" width = 373>
+
+## 边界情况
 
 * 如果数据源中某个点的值为null，那么图表将会跳过该点直接于下一个点相连。如果为null的点在数据源头或尾，那么头或尾将会空去一部分。
 
